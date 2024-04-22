@@ -1,5 +1,5 @@
 package org.example
-
+import kotlin.math.round
 import AbstractCalculator
 
 open class AddClass : AbstractCalculator(){
@@ -8,14 +8,14 @@ open class AddClass : AbstractCalculator(){
     }
 
     override fun calculate(num1: Int, num2: Double): Double {
-        return num1.toDouble() + num2
+        return round((num1.toDouble() + num2) * 100000) / 100000.0
     }
 
     override fun calculate(num1: Double, num2: Int): Double {
-        return num1 + num2.toDouble()
+        return round((num1 + num2.toDouble()) * 100000) / 100000.0
     }
 
     override fun calculate(num1: Double, num2: Double): Double {
-        return num1 + num2
+        return round((num1 + num2) * 100000) / 100000.0
     }
 }

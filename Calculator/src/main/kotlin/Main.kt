@@ -71,7 +71,7 @@ fun main() {
             try {
                 numberInt = input.toInt()
 //                println("정수")
-                println("정수 : ${numberInt}")
+//                println("정수 : ${numberInt}")
                 intFlag = true
             } catch (e: NumberFormatException) {
 
@@ -80,7 +80,7 @@ fun main() {
                 try {  // 실수 변환
                     numberDouble = input.toDouble()
 //                    println("실수")
-                    println("실수 : ${numberDouble}")
+//                    println("실수 : ${numberDouble}")
                     doubleFlag = true
                 } catch (e: NumberFormatException ) {
                     println("------------------------------------")

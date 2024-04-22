@@ -35,7 +35,7 @@ class Calculator {
     }
 
     fun input(num1: Int, num2: Int): Int {
-        println("클래스에서 num2 : ${num2}")
+//        println("클래스에서 num2 : ${num2}")
         if (operator == "+") {
 //            println("${num1} + ${num2} = ${num1 + num2}")
             numberInt = add.calculate(num1, num2)
@@ -65,7 +65,7 @@ class Calculator {
     }
 
     fun input(num1: Double, num2: Int): Double {
-        println("클래스에서 num2 : ${num2}")
+//        println("클래스에서 num2 : ${num2}")
         if (operator == "+") {
 //            println("${num1} + ${num2} = ${num1 + num2}")
             numberDouble = add.calculate(num1, num2)
@@ -95,7 +95,7 @@ class Calculator {
     }
 
     fun input(num1: Double, num2: Double): Double {
-        println("클래스에서 num2 : ${num2}")
+//        println("클래스에서 num2 : ${num2}")
         if (operator == "+") {
 //            println("${num1} + ${num2} = ${num1 + num2}")
             numberDouble = add.calculate(num1, num2)
@@ -125,7 +125,7 @@ class Calculator {
     }
 
     fun input(num1: Int, num2: Double): Double {
-        println("클래스에서 num2 : ${num2}")
+//        println("클래스에서 num2 : ${num2}")
         if (operator == "+") {
 //            println("${num1} + ${num2} = ${num1 + num2}")
             numberDouble = add.calculate(num1, num2)
