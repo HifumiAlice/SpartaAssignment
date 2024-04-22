@@ -45,20 +45,20 @@ fun main() {
     println("계산기 사용법")
     println("숫자 입력창에 정수 또는 실수를 입력해주세요 ")
     println("연산 입력창에는 +, -, *, /, % 연산만 입력해주세요")
-    println("숫자 또는 연산 입력창에 \"그만\"을 입력하면 계산기 작동을 멈춥니다.")
-    println("숫자 또는 연산 입력창에 \"초기화\"을 입력하면 계산값이 초기화 됩니다.")
+    println("숫자 또는 연산 입력창에 \"q 또는 quit\"을 입력하면 계산기 작동을 멈춥니다.")
+    println("숫자 또는 연산 입력창에 \"r 또는 reset\"을 입력하면 계산값이 초기화 됩니다.")
     println("------------------------------------")
 
     while(true){
         print("숫자 입력창 :   ")
         input = scanner.next()
 
-        if (input == "그만") {
+        if (input == "q" || input == "quit") {
             println("------------------------------------")
             println("계산기를 종료합니다.")
             println("------------------------------------")
             break
-        } else if (input == "초기화") {
+        } else if (input == "r" || input == "reset") {
             println("------------------------------------")
             println("계산 결과를 초기화 합니다.")
             println("------------------------------------")
@@ -70,15 +70,17 @@ fun main() {
 
             try {
                 numberInt = input.toInt()
-                println("정수")
+//                println("정수")
+                println("정수 : ${numberInt}")
                 intFlag = true
             } catch (e: NumberFormatException) {
 
-                println("정수 변환 불가")
+//                println("정수 변환 불가")
 
                 try {  // 실수 변환
                     numberDouble = input.toDouble()
-                    println("실수")
+//                    println("실수")
+                    println("실수 : ${numberDouble}")
                     doubleFlag = true
                 } catch (e: NumberFormatException ) {
                     println("------------------------------------")
@@ -95,24 +97,26 @@ fun main() {
 
             // 첫번쨰 수와 두번째 수를 입력 받는 중간에 한번만 실행됨
             if (i == 0 ) {
-                println("i : ${i}")
+//                println("i : ${i}")
                 operator = returnOperator()
-                if (operator == "초기화") {
+                if (operator == "r" || operator == "reset") {
                     i = 0
                     doubleFlag = false
                     resultDouble = 0.0
                     resultInt = 0
                     continue
-                } else if (operator == "그만") {
+                } else if (operator == "q" || operator == "quit") {
                     break
                 } else {
-                    println("모드 체인지")
+//                    println("모드 체인지")
                     cal.changeMod(operator)
 
+                    // 정수로 입력 받았다면
                     if (intFlag == true) {
                         resultInt = numberInt
+                        resultDouble = resultInt.toDouble()
                         intFlag = false
-                    } else {
+                    } else { // 실수로 입력 받았다면
                         resultDouble = numberDouble
                     }
                     i++
@@ -124,9 +128,10 @@ fun main() {
 
             // 한번이라도 실수였던 적이 있으면
             if (doubleFlag == true) {
-
+//                println("정수 플래그1 : ${intFlag}")
                 if(intFlag == true) {
                     resultDouble = cal.input(resultDouble,numberInt)
+                    intFlag = false
                 } else {
                     resultDouble = cal.input(resultDouble,numberDouble)
                 }
@@ -134,6 +139,7 @@ fun main() {
                 println("계산 결과 : ${resultDouble}")
 
             } else { // 실수가 된 적이 없다면
+//                println("정수 플래그2 : ${intFlag}")
                 resultInt = cal.input(resultInt, numberInt)
                 intFlag = false
                 resultDouble = resultInt.toDouble()
@@ -144,13 +150,13 @@ fun main() {
             // 연산기호 정하기
             operator = returnOperator()
 
-            if (operator == "초기화") {
+            if (operator == "r" || operator == "reset") {
                 i = 0
                 doubleFlag = false
                 resultDouble = 0.0
                 resultInt = 0
                 continue
-            } else if (operator == "그만") {
+            } else if (operator == "q" || operator == "quit") {
                 break
             } else {
                 cal.changeMod(operator)
@@ -173,7 +179,7 @@ fun returnOperator() : String{
 
         if (input == "+" || input == "-" || input == "*" || input == "/" || input == "%") {
             return input
-        } else if (input == "그만" || input == "초기화") {
+        } else if (input == "q" || input == "quit" || input == "r" || input == "reset") {
             return input
         }
         else {
